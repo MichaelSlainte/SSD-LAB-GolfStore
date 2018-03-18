@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Golfstore</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id='header'>
+    <!-- Header Image Displayes here -->
+  </div>
+  <div id='menu'>
+    <div id="navbar">
+      <ul>
+        <li><a href="/items">Products</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/admin">Login</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id='container'>
+    <div id='content'>
+      <p class="notice"><%= flash[:notice] %></p>
+      <%= yield %>
+    </div>
+    <div id='first-column'>
+      <div class="loginbox">
+        <h2 class="BoxHeaders">Login Here...</h2>
+      </div>
+      <div class="searchbox">
+        <h2 class="BoxHeaders"></h2>
+        <p id="notice"><%= notice %></p>
+        <%= form_tag(items_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Item By Name" %>
+        <%= submit_tag "Search" %>
+        <% end %>
+     </div>
+    </div>
+  </div>
+  <div id='footer'>
+    <h6 class="footertext">&copy;SSD-LAB Online Golf Store &trade; 2018</h6>
+  </div>
+</body>
+</html>
